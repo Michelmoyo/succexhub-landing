@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Succexhub · Rencontre des entrepreneurs à Kinshasa</title>
+<meta name="description" content="Rencontre Succexhub à Kinshasa : découvre une approche pour démarrer ton activité et un plan d'action sur six mois. Gratuit, sur réservation.">
+<meta name="theme-color" content="#0E0E3F">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CD">
+<meta property="og:title" content="Lance ton business à Kinshasa même avec un petit budget">
+<meta property="og:description" content="Rencontre Succexhub à Kinshasa : découvre une approche pour démarrer ton activité et un plan d'action sur six mois. Gratuit, sur réservation.">
+<meta property="og:url" content="https://business.succexhub.com/">
+<meta property="og:image" content="https://business.succexhub.com/assets/og-image.jpg">
+<link rel="canonical" href="https://business.succexhub.com/">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/exo-variable.ttf" as="font" type="font/ttf" crossorigin>
+<style>
+body { margin: 0; }
+img { max-width: 100%; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+</style>
+<style>
+@font-face {
+  font-family: "Exo";
+  src: url("assets/exo-variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Layout : une colonne mobile d'abord ; bande sombre pour le problème ; bouton WhatsApp orange répété 3 fois. */
+:root {
+  --navy: #0E0E3F;
+  --orange: #FF8B25;
+  --green: #00B17E;
+  --purple: #7B38A8;
+
+  --bg: #FAFAFD;
+  --bg-alt: #F0F0F7;
+  --surface: #FFFFFF;
+  --fg: #0E0E3F;
+  --fg-muted: #4A4A6E;
+  --border: #DCDCEA;
+  --accent-text: #0E7A5A;
+  --cta-bg: #FF8B25;
+  --cta-fg: #0E0E3F;
+  --cta-bg-hover: #FF9D47;
+  --band-bg: #0E0E3F;
+  --band-fg: #FFFFFF;
+  --band-muted: #C3C3DD;
+  --placeholder-bg: #FFF4E9;
+  --placeholder-fg: #8A4300;
+  --mock-bg: #0E0E3F;
+  --mock-fg: #FFFFFF;
+  --logo-light: block;
+  --logo-dark: none;
+
+  --font-display: "Exo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Exo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: clamp(1.9rem, 6.5vw, 2.6rem);
+  --step-4: clamp(2.2rem, 8.5vw, 3.4rem);
+
+  --radius: 10px;
+  --max: 1080px;
+  --text-max: 60ch;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0B0B30; --bg-alt: #13134A; --surface: #17174F;
+    --fg: #F3F3FA; --fg-muted: #B9B9D6; --border: #2C2C66; --accent-text: #3DDBA8;
+    --band-bg: #13134A; --band-fg: #FFFFFF; --band-muted: #C3C3DD;
+    --placeholder-bg: #3A2614; --placeholder-fg: #FFC48F;
+    --mock-bg: #FF8B25; --mock-fg: #0E0E3F;
+    --logo-light: none; --logo-dark: block;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0B0B30; --bg-alt: #13134A; --surface: #17174F;
+  --fg: #F3F3FA; --fg-muted: #B9B9D6; --border: #2C2C66; --accent-text: #3DDBA8;
+  --band-bg: #13134A; --band-fg: #FFFFFF; --band-muted: #C3C3DD;
+  --placeholder-bg: #3A2614; --placeholder-fg: #FFC48F;
+  --mock-bg: #FF8B25; --mock-fg: #0E0E3F;
+  --logo-light: none; --logo-dark: block;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--surface);
+}
+.wrap {
+  max-width: var(--max); margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2 {
+  font-family: var(--font-display); font-weight: 800; line-height: 1.08;
+  letter-spacing: -0.01em; text-wrap: balance; margin: 0;
+}
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-1); line-height: 1.3; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.eyebrow {
+  font-size: var(--step--1); font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent-text);
+}
+.lead { font-size: var(--step-1); color: var(--fg-muted); max-width: var(--text-max); }
+.muted { color: var(--fg-muted); }
+.ph {
+  display: inline-block; padding: 1px 8px; border-radius: 6px;
+  background: var(--placeholder-bg); color: var(--placeholder-fg); font-weight: 700; font-size: 0.95em;
+}
+.icon { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Bandeau maquette */
+.mock-bar { background: var(--mock-bg); color: var(--mock-fg); font-size: var(--step--1); }
+.mock-bar .wrap { padding-block: 8px; }
+
+/* En-tête */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: var(--surface); border-bottom: 1px solid var(--border);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px; }
+.brand img { height: 26px; width: auto; max-width: none; }
+.brand .logo-light { display: var(--logo-light); }
+.brand .logo-dark { display: var(--logo-dark); }
+
+/* Boutons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 52px; padding: 14px 22px;
+  background: var(--cta-bg); color: var(--cta-fg);
+  font: 700 var(--step-0)/1.25 var(--font-body);
+  border: 0; border-radius: var(--radius); cursor: pointer; text-align: center;
+  transition: background-color 180ms ease, transform 180ms ease;
+}
+.btn, .btn-sm { text-decoration: none; }
+.btn:hover { background: var(--cta-bg-hover); }
+.wa-num { color: var(--band-fg); user-select: all; }
+.btn:active { transform: translateY(1px); }
+.btn-sm {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 44px; padding: 8px 14px; font: 700 var(--step--1)/1 var(--font-body);
+  background: var(--cta-bg); color: var(--cta-fg); border: 0; border-radius: var(--radius);
+  cursor: pointer; white-space: nowrap;
+}
+.btn-sm:hover { background: var(--cta-bg-hover); }
+.btn:focus-visible, .btn-sm:focus-visible, summary:focus-visible { outline: 3px solid var(--accent-text); outline-offset: 3px; }
+.cta-note { font-size: var(--step--1); color: var(--fg-muted); }
+
+section { padding-block: 56px; }
+section.alt { background: var(--bg-alt); }
+.section-head { display: grid; gap: 12px; margin-bottom: 24px; max-width: var(--text-max); }
+
+/* Hero */
+.hero { padding-block: 28px 48px; }
+.hero .wrap { display: grid; gap: 28px; align-items: center; }
+.hero-copy { display: grid; gap: 18px; min-width: 0; }
+.meta { display: grid; gap: 8px; font-weight: 700; }
+.meta div { display: flex; align-items: center; gap: 10px; }
+.meta .icon { color: var(--accent-text); }
+.hero-copy .actions { display: grid; gap: 10px; justify-items: start; margin-top: 4px; }
+.hero-figure { margin: 0; display: grid; justify-items: center; }
+.hero-figure img { width: 100%; max-width: 440px; height: auto; aspect-ratio: 653 / 636; }
+@media (min-width: 860px) {
+  .hero { padding-block: 56px 72px; }
+  .hero .wrap { grid-template-columns: 1.1fr 0.9fr; }
+}
+
+/* Problème : bande sombre */
+.pain { background: var(--band-bg); color: var(--band-fg); }
+.pain .wrap { display: grid; gap: 24px; }
+.pain h2 { max-width: 18ch; }
+.pain h2 em { font-style: normal; color: var(--orange); }
+.pain-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; max-width: var(--text-max); }
+.pain-list li { padding: 14px 16px; border-radius: var(--radius); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); }
+.pain .turn { font-size: var(--step-1); font-weight: 700; max-width: var(--text-max); padding-left: 14px; border-left: 3px solid var(--green); }
+
+/* Six mois */
+.goals { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+@media (min-width: 700px) { .goals { grid-template-columns: 1fr 1fr; } }
+.goals li {
+  display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px;
+  font-weight: 700;
+}
+.goals svg { width: 28px; height: 28px; }
+.after { margin-top: 20px; max-width: var(--text-max); }
+
+/* Rencontre */
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; max-width: var(--text-max); }
+.checklist li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; align-items: start; }
+.checklist li::before {
+  content: ""; width: 14px; height: 14px; margin-top: 6px; background: var(--green);
+  clip-path: path("M0 7 H7 L14 14 H7 A7 7 0 0 1 0 7 Z M0 0 H7 A7 7 0 0 1 14 7 H7 Z");
+}
+.meet { display: grid; gap: 20px; }
+.meet .actions { display: grid; gap: 10px; justify-items: start; }
+
+/* Porteur */
+.person { display: grid; gap: 24px; align-items: start; }
+@media (min-width: 760px) { .person { grid-template-columns: 300px 1fr; } }
+.photo {
+  position: relative; margin: 0; width: 100%; max-width: 300px; aspect-ratio: 1;
+  border-radius: var(--radius); background: var(--bg-alt); overflow: hidden;
+  display: grid; align-items: end; justify-items: center;
+}
+.photo-motif { position: absolute; top: 10%; right: 10%; width: 70%; height: 70%; opacity: 0.6; }
+.photo img { position: relative; width: 100%; height: auto; display: block; }
+.person-body { display: grid; gap: 14px; min-width: 0; max-width: var(--text-max); }
+.person-body .role { font-weight: 700; color: var(--accent-text); }
+.story { margin: 0; padding-left: 14px; border-left: 3px solid var(--orange); color: var(--fg); }
+.facts-row { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.facts-row li { display: grid; gap: 2px; padding: 12px 16px; border-radius: var(--radius); background: var(--bg-alt); min-width: 140px; }
+.facts-row strong { font-family: var(--font-display); font-weight: 800; font-size: var(--step-2); line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums; }
+.facts-row span { font-size: var(--step--1); color: var(--fg-muted); }
+.quote { font-family: var(--font-display); font-weight: 800; font-size: var(--step-2); line-height: 1.2; text-wrap: balance; }
+
+/* Infos pratiques */
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; max-width: 640px; }
+.info-card dl { margin: 0; display: grid; gap: 14px; }
+.info-card dl > div { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; }
+.info-card .icon { color: var(--accent-text); margin-top: 3px; }
+.info-card dt { font-size: var(--step--1); color: var(--fg-muted); }
+.info-card dd { margin: 0; font-weight: 700; }
+.info-card .ref { font-weight: 400; color: var(--fg-muted); }
+
+/* FAQ */
+.faq { display: grid; gap: 10px; max-width: 760px; }
+.faq details { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 16px 18px; min-height: 52px;
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; font-weight: 700;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+"; flex: none; width: 28px; height: 28px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--bg-alt); font-size: 1.2rem; line-height: 1;
+  transition: transform 200ms ease;
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { padding: 0 18px 18px; color: var(--fg-muted); max-width: var(--text-max); }
+
+/* Appel final */
+.final { background: var(--band-bg); color: var(--band-fg); position: relative; overflow: hidden; }
+.final .wrap { display: grid; gap: 18px; position: relative; z-index: 1; }
+.final h2 { max-width: 18ch; }
+.final p, .final .cta-note { color: var(--band-muted); max-width: var(--text-max); }
+.final .motif { position: absolute; right: -60px; bottom: -60px; width: 300px; height: 300px; opacity: 0.5; z-index: 0; pointer-events: none; }
+
+/* Pied de page */
+footer { background: var(--band-bg); color: var(--band-muted); border-top: 1px solid rgba(255,255,255,0.12); font-size: var(--step--1); }
+footer .wrap { display: grid; gap: 12px; padding-block: 32px 110px; }
+footer img { height: 24px; width: auto; }
+footer p { max-width: var(--text-max); }
+
+/* Barre fixe mobile */
+.sticky-cta {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 25;
+  background: var(--surface); border-top: 1px solid var(--border);
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  transform: translateY(110%); transition: transform 220ms ease;
+}
+.sticky-cta.show { transform: translateY(0); }
+.sticky-cta .btn { width: 100%; }
+@media (min-width: 860px) { .sticky-cta { display: none; } }
+@media (prefers-reduced-motion: reduce) { .sticky-cta, .btn, .faq summary::after { transition: none; } }
+
+/* Outil de réservation (style Calendly) */
+.dates-block { display: flex; align-items: center; gap: 10px; }
+.dates-label { display: flex; align-items: center; gap: 10px; }
+.date-pills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.date-pills li { padding: 6px 12px; border-radius: 999px; background: var(--bg-alt); border: 1.5px solid var(--border); font-weight: 700; font-size: var(--step--1); }
+.date-pills li:first-child { border-color: var(--green); }
+.info-dates { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.bk {
+  position: fixed; inset: 0; z-index: 40; display: grid; place-items: end center;
+  background: rgba(14, 14, 63, 0.6);
+  padding: 12px max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+}
+@media (min-width: 640px) { .bk { place-items: center; } }
+.bk-panel {
+  width: 100%; max-width: 520px; max-height: calc(100dvh - 24px); overflow-y: auto;
+  background: var(--surface); color: var(--fg); border-radius: 16px;
+  display: grid; grid-template-rows: auto auto 1fr;
+}
+.bk-event { padding: 20px 20px 16px; border-bottom: 1px solid var(--border); display: grid; gap: 10px; position: relative; }
+.bk-host { display: flex; align-items: center; gap: 10px; font-size: var(--step--1); color: var(--fg-muted); font-weight: 700; padding-right: 48px; }
+.bk-host svg { width: 28px; height: 28px; flex: none; }
+.bk-event h2 { font-size: var(--step-2); padding-right: 52px; }
+.bk-facts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: var(--step--1); color: var(--fg-muted); }
+.bk-facts li { display: flex; align-items: center; gap: 6px; }
+.bk-facts .icon { width: 16px; height: 16px; color: var(--accent-text); }
+.bk-close {
+  position: absolute; top: 12px; right: 12px; width: 44px; height: 44px; border-radius: 50%;
+  border: 0; background: var(--bg-alt); color: var(--fg); cursor: pointer; display: grid; place-items: center;
+}
+.bk-close:focus-visible, .bk-back:focus-visible, .date-opt input:focus-visible + span { outline: 3px solid var(--accent-text); outline-offset: 2px; }
+.bk-progress { display: flex; align-items: center; gap: 10px; padding: 12px 20px 0; font-size: var(--step--1); color: var(--fg-muted); font-weight: 700; }
+.bk-progress .bar { flex: 1; height: 6px; border-radius: 999px; background: var(--bg-alt); overflow: hidden; }
+.bk-progress .bar span { display: block; height: 100%; background: var(--green); transition: width 250ms ease; }
+.bk-step { padding: 16px 20px 22px; display: grid; gap: 16px; align-content: start; }
+.bk-step h3 { font-size: var(--step-1); }
+.bk-hint { font-size: var(--step--1); color: var(--fg-muted); }
+
+.dates { border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.date-opt { position: relative; }
+.date-opt input { position: absolute; opacity: 0; pointer-events: none; }
+.date-opt > span {
+  display: grid; justify-items: center; gap: 2px; padding: 14px 6px; min-height: 44px;
+  border: 1.5px solid var(--border); border-radius: var(--radius); background: var(--surface);
+  cursor: pointer; text-align: center; transition: border-color 150ms ease, background-color 150ms ease;
+}
+.date-opt > span:hover { border-color: var(--accent-text); }
+.date-opt .wd { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-muted); }
+.date-opt .dn { font-family: var(--font-display); font-weight: 800; font-size: 2rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.date-opt .mo { font-size: var(--step--1); }
+.date-opt .tm { margin-top: 6px; font-size: 0.8125rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--bg-alt); }
+.date-opt input:checked + span { border-color: var(--green); border-width: 2px; background: var(--bg-alt); }
+.date-opt input:checked + span .tm { background: var(--green); color: var(--navy); }
+.date-opt .soon { position: absolute; top: -9px; left: 50%; transform: translateX(-50%); font-size: 0.6875rem; font-weight: 700; background: var(--orange); color: var(--navy); padding: 1px 8px; border-radius: 999px; white-space: nowrap; }
+
+.bk-recap { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; padding: 12px 14px; border-radius: var(--radius); background: var(--bg-alt); font-weight: 700; }
+.bk-recap .icon { color: var(--accent-text); vertical-align: -4px; margin-right: 6px; }
+.bk-back { border: 0; background: none; color: var(--accent-text); font: 700 var(--step--1)/1 var(--font-body); text-decoration: underline; cursor: pointer; padding: 10px 4px; min-height: 44px; }
+
+.field { display: grid; gap: 6px; }
+.field label { font-weight: 700; font-size: var(--step--1); }
+.field input[type="text"], .field input[type="tel"] {
+  width: 100%; min-height: 48px; padding: 10px 12px; font: 400 var(--step-0)/1.3 var(--font-body);
+  color: var(--fg); background: var(--surface); border: 1.5px solid var(--border); border-radius: 8px;
+}
+.field input:focus { outline: 3px solid var(--accent-text); outline-offset: 1px; border-color: var(--accent-text); }
+.field input[aria-invalid="true"] { border-color: #D93025; }
+.phone { display: grid; grid-template-columns: auto 1fr; }
+.phone .cc { display: grid; place-items: center; padding: 0 12px; border: 1.5px solid var(--border); border-right: 0; border-radius: 8px 0 0 8px; background: var(--bg-alt); font-weight: 700; }
+.phone input[type="tel"] { border-radius: 0 8px 8px 0; }
+.err { color: #D93025; font-size: var(--step--1); font-weight: 700; }
+.consent { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; font-size: var(--step--1); color: var(--fg-muted); }
+.consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--green); }
+.bk-step .btn { width: 100%; }
+.btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+.btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 10px 16px; width: 100%;
+  border: 1.5px solid var(--border); border-radius: var(--radius); color: var(--fg); background: var(--surface);
+  font: 700 var(--step-0)/1.2 var(--font-body); text-decoration: none;
+}
+.btn-ghost:hover { border-color: var(--accent-text); }
+.done-mark { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: var(--navy); }
+.done-mark svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.bk-time-src { font-size: 0.75rem; color: var(--fg-muted); }
+@media (prefers-reduced-motion: reduce) { .bk-progress .bar span, .date-opt > span { transition: none; } }
+</style>
+<!-- Meta Pixel : remplacer la valeur vide par l'ID du Pixel (15-16 chiffres) -->
+<script>
+window.SX_PIXEL_ID = '';
+if (window.SX_PIXEL_ID) {
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.SX_PIXEL_ID);
+  fbq('track', 'PageView');
+}
+window.sxTrack = function (type, name, params) { try { if (window.fbq && window.SX_PIXEL_ID) fbq(type, name, params || {}); } catch (e) {} };
+</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z"/><path d="M14 7v10" stroke-dasharray="2 2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.4A9 9 0 1 1 21 12z"/><path d="M9 10.5c.5 2 2 3.5 4 4"/></symbol>
+  <symbol id="i-s" viewBox="0 0 100 100"><path fill="#FF8B25" stroke="none" d="M0 0H50A50 50 0 0 1 100 50H50Z"/><path fill="#00B17E" stroke="none" d="M0 50H50L100 100H50A50 50 0 0 1 0 50Z"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <img class="logo-light" src="assets/logo.webp" alt="Succexhub" width="480" height="89">
+      <img class="logo-dark" src="assets/logo-blanc.webp" alt="Succexhub" width="480" height="100">
+    </div>
+    <button class="btn-sm js-book" type="button"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Réserver</button>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">Succexhub · Rencontre des entrepreneurs à succès</span>
+        <h1>Lance ton business à Kinshasa même avec un petit budget</h1>
+        <p class="lead">Découvre une approche pour démarrer ton activité et un plan d'action sur six mois pour la structurer, avec la rentabilité comme objectif.</p>
+        <div class="meta">
+          <div class="dates-block">
+            <svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg>
+            <ul class="date-pills" id="hero-dates"><li>Lundi, mercredi et vendredi</li></ul>
+          </div>
+          <div><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>08h30 – 10h00</span></div>
+          <div><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Kinshasa · Avenue Lac Moero 279</span></div>
+        </div>
+        <div class="actions">
+          <button class="btn js-book" type="button"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Je réserve ma place sur WhatsApp</button>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <img src="assets/hero.webp" alt="Un homme souriant, assis en tailleur, travaille sur un ordinateur portable" width="653" height="636" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <!-- Problème -->
+  <section class="pain" id="probleme">
+    <div class="wrap">
+      <h2>Ton argent est disponible. <em>La direction te manque.</em></h2>
+      <ul class="pain-list">
+        <li>Tu cherches une activité, mais chaque personne te conseille autre chose.</li>
+        <li>Tu hésites à te lancer par peur de gaspiller ton budget.</li>
+      </ul>
+      <p class="turn">Avant d'engager ton argent, prends le temps de comprendre comment démarrer.</p>
+    </div>
+  </section>
+
+  <!-- Six mois -->
+  <section id="cap">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Donne un cap aux six prochains mois</h2>
+        <p class="lead">Imagine avancer avec :</p>
+      </div>
+      <ul class="goals">
+        <li><svg aria-hidden="true"><use href="#i-s"/></svg>Une activité claire dont tu comprends le fonctionnement.</li>
+        <li><svg aria-hidden="true"><use href="#i-s"/></svg>Un budget organisé et des dépenses anticipées.</li>
+        <li><svg aria-hidden="true"><use href="#i-s"/></svg>Des actions précises à mener chaque semaine.</li>
+        <li><svg aria-hidden="true"><use href="#i-s"/></svg>Des repères simples pour mesurer tes progrès.</li>
+      </ul>
+      <p class="after muted">Succexhub t'aide à passer de l'envie d'entreprendre à une démarche structurée.</p>
+    </div>
+  </section>
+
+  <!-- Rencontre -->
+  <section class="alt" id="rencontre">
+    <div class="wrap meet">
+      <div class="section-head">
+        <h2>Une rencontre pour comprendre et préparer ton démarrage</h2>
+        <p class="lead">Schadrac Ngoy te présentera :</p>
+      </div>
+      <ul class="checklist">
+        <li>L'approche Succexhub et le modèle d'activité proposé.</li>
+        <li>Le budget, le temps et les compétences à prévoir.</li>
+        <li>Les étapes d'une feuille de route sur six mois.</li>
+        <li>Les possibilités d'accompagnement après la rencontre.</li>
+      </ul>
+      <p>Tu pourras poser tes questions avant de décider de la suite.</p>
+      <div class="actions">
+        <button class="btn js-book" type="button"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Je réserve ma place sur WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Porteur -->
+  <section id="porteur">
+    <div class="wrap">
+      <div class="person">
+        <figure class="photo">
+          <svg class="photo-motif" viewBox="0 0 100 100" aria-hidden="true"><path fill="none" stroke="#FF8B25" stroke-width="1.2" d="M0 0H50A50 50 0 0 1 100 50H50Z"/><path fill="none" stroke="#00B17E" stroke-width="1.2" d="M0 50H50L100 100H50A50 50 0 0 1 0 50Z"/></svg>
+          <img src="assets/schadrac.webp" alt="Portrait de Schadrac Ngoy, en veste de costume bleu marine" width="445" height="429" loading="lazy">
+        </figure>
+        <div class="person-body">
+          <span class="eyebrow">Rencontre Schadrac Ngoy</span>
+          <h2>Schadrac Ngoy</h2>
+          <p class="role">Entrepreneur et porteur de Succexhub</p>
+          <p class="quote">« Le succès se construit avec de la méthode, de la discipline et des actions régulières. »</p>
+          <p class="muted">À travers Succexhub, il porte une ambition : aider des personnes motivées à entreprendre avec davantage de clarté, de structure et d'autonomie.</p>
+          <blockquote class="story">« Entrepreneur depuis 13 ans, j'accompagne aujourd'hui 200 personnes dans le démarrage de leur activité. Mon expérience m'a appris une chose : la méthode et la régularité font la différence. »</blockquote>
+          <ul class="facts-row">
+            <li><strong>13 ans</strong><span>d'entrepreneuriat</span></li>
+            <li><strong>200</strong><span>personnes accompagnées</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Infos pratiques -->
+  <section class="alt" id="infos">
+    <div class="wrap">
+      <div class="section-head"><h2>Les informations pratiques</h2></div>
+      <div class="info-card">
+        <dl>
+          <div><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg><div><dt>Dates</dt><dd><ul class="info-dates" id="info-dates"><li>Lundi, mercredi et vendredi</li></ul></dd></div></div>
+          <div><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><div><dt>Heure et durée</dt><dd>08h30 – 10h00 (1 h 30)</dd></div></div>
+          <div><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg><div><dt>Participation</dt><dd>Gratuite</dd></div></div>
+          <div><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><div><dt>Lieu</dt><dd>Avenue Lac Moero 279<br><span class="ref">Référence : Maison Schengen, juste après l'Académie des Beaux-Arts.</span></dd></div></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head"><h2>Tes questions</h2></div>
+      <div class="faq">
+        <details>
+          <summary>Faut-il déjà avoir une idée de business ?</summary>
+          <p>Tu peux participer si tu cherches encore une activité à démarrer.</p>
+        </details>
+        <details>
+          <summary>Quel budget faut-il prévoir pour démarrer ?</summary>
+          <p>Les coûts et les conditions du modèle proposé seront expliqués pendant la rencontre.</p>
+        </details>
+        <details>
+          <summary>Les résultats sont-ils garantis en six mois ?</summary>
+          <p>Les six mois donnent un cadre de progression. Les résultats dépendent notamment de ton implication, de tes moyens et du marché.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appel final -->
+  <section class="final" id="final">
+    <svg class="motif" viewBox="0 0 100 100" aria-hidden="true"><path fill="none" stroke="#FF8B25" stroke-width="0.8" d="M0 0H50A50 50 0 0 1 100 50H50Z"/><path fill="none" stroke="#00B17E" stroke-width="0.8" d="M0 50H50L100 100H50A50 50 0 0 1 0 50Z"/></svg>
+    <div class="wrap">
+      <h2>Et si tu commençais par y voir plus clair&nbsp;?</h2>
+      <p>Viens découvrir la méthode, poser tes questions et préparer tes prochaines étapes.</p>
+      <div><button class="btn js-book" type="button"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Je réserve ma place sur WhatsApp</button></div>
+      <span class="cta-note">Écris-nous pour connaître les modalités et confirmer ta participation.<br>WhatsApp : <strong class="wa-num">+243 812 941 930</strong></span>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="assets/logo-blanc.webp" alt="Succexhub" width="480" height="100">
+    <p>Aucune promesse de revenus. Les résultats dépendent de l'implication de chacun.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+  <button class="btn js-book" type="button" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Je réserve ma place sur WhatsApp</button>
+</div>
+
+<div class="bk" id="booking" hidden role="dialog" aria-modal="true" aria-labelledby="bk-title">
+  <div class="bk-panel">
+    <div class="bk-event">
+      <button class="bk-close" type="button" id="bk-close" aria-label="Fermer la réservation"><svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <h2 id="bk-title">Rencontre Succexhub</h2>
+      <ul class="bk-facts">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-ticket"/></svg>Gratuit</li>
+      </ul>
+    </div>
+    <div class="bk-progress" aria-live="polite"><span id="bk-step-label">Étape 1 sur 3</span><span class="bar" aria-hidden="true"><span id="bk-bar" style="width:33%"></span></span></div>
+
+    <!-- Étape 1 : date -->
+    <div class="bk-step" id="bk-step-1">
+      <h3>Choisis ta date</h3>
+      <fieldset class="dates" id="bk-dates" aria-label="Dates disponibles"></fieldset>
+      <p class="bk-time-src" id="bk-time-src" hidden></p>
+      <button class="btn" type="button" id="bk-next-1" disabled>Continuer</button>
+    </div>
+
+    <!-- Étape 2 : coordonnées -->
+    <form class="bk-step" id="bk-step-2" hidden novalidate>
+      <div class="bk-recap"><span><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg><span id="bk-recap-2"></span></span><button class="bk-back" type="button" id="bk-back-2">Changer de date</button></div>
+      <h3>Tes coordonnées</h3>
+      <div class="field">
+        <label for="bk-prenom">Prénom</label>
+        <input type="text" id="bk-prenom" name="prenom" autocomplete="given-name" required aria-describedby="bk-prenom-err">
+        <span class="err" id="bk-prenom-err" hidden>Indique ton prénom.</span>
+      </div>
+      <div class="field">
+        <label for="bk-nom">Nom</label>
+        <input type="text" id="bk-nom" name="nom" autocomplete="family-name">
+      </div>
+      <div class="field">
+        <label for="bk-tel">Numéro WhatsApp</label>
+        <div class="phone"><span class="cc" aria-hidden="true">+243</span><input type="tel" id="bk-tel" name="tel" inputmode="tel" autocomplete="tel-national" placeholder="81 234 5678" required aria-describedby="bk-tel-err"></div>
+        <span class="err" id="bk-tel-err" hidden>Indique un numéro à 9 chiffres, par exemple 81 234 5678.</span>
+      </div>
+      <label class="consent" for="bk-consent"><input type="checkbox" id="bk-consent" name="consent"><span>Recevoir un rappel sur WhatsApp (STOP pour arrêter).</span></label>
+      <button class="btn" type="submit">Continuer</button>
+    </form>
+
+    <!-- Étape 3 : confirmation -->
+    <div class="bk-step" id="bk-step-3" hidden>
+      <div class="done-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h3 id="bk-done-title">Envoie ta réservation</h3>
+      <div class="bk-recap"><span><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg><span id="bk-recap-3"></span></span></div>
+      <p class="bk-hint">Ta place est confirmée à la réception du message.</p>
+      <a class="btn" id="bk-wa" href="#" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>Envoyer ma réservation sur WhatsApp</a>
+      <a class="btn-ghost" id="bk-gcal" href="#" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg>Ajouter à Google Agenda</a>
+      <button class="bk-back" type="button" id="bk-back-3">Modifier mes informations</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var sticky = document.getElementById('sticky-cta');
+  var heroOut = false, finalIn = false;
+  function updateSticky() {
+    var show = heroOut && !finalIn;
+    sticky.classList.toggle('show', show);
+    sticky.setAttribute('aria-hidden', show ? 'false' : 'true');
+    sticky.querySelector('button').tabIndex = show ? 0 : -1;
+  }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { heroOut = !e[0].isIntersecting; updateSticky(); }).observe(document.getElementById('hero'));
+    new IntersectionObserver(function (e) { finalIn = e[0].isIntersecting; updateSticky(); }).observe(document.getElementById('final'));
+  }
+  // ---------- Réservation ----------
+  var WA_NUMBER = '243812941930';
+  var SESSION_DAYS = [1, 3, 5];          // lundi, mercredi, vendredi
+  var START_UTC = [7, 30], END_UTC = [9, 0]; // 08h30–10h00 à Kinshasa (UTC+1)
+  var KIN_OFFSET = 3600e3;
+  var JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  var MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  var cap = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
+
+  function nextSessions(nowMs, n) {
+    var k = new Date(nowMs + KIN_OFFSET); // champs UTC = heure de Kinshasa
+    var out = [];
+    for (var i = 1; out.length < n && i <= 14; i++) { // i = 1 : on n'affiche jamais le jour même
+      var d = new Date(Date.UTC(k.getUTCFullYear(), k.getUTCMonth(), k.getUTCDate() + i));
+      if (SESSION_DAYS.indexOf(d.getUTCDay()) !== -1) out.push(d);
+    }
+    return out;
+  }
+  function longLabel(d, withYear) {
+    return cap(JOURS[d.getUTCDay()]) + ' ' + (d.getUTCDate() === 1 ? '1er' : d.getUTCDate()) + ' ' + MOIS[d.getUTCMonth()] + (withYear ? ' ' + d.getUTCFullYear() : '');
+  }
+  function gcalStamp(d, hm) {
+    var x = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), hm[0], hm[1]));
+    return x.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  }
+
+  var sessions = [], chosen = null;
+  var datesBox = document.getElementById('bk-dates');
+  var next1 = document.getElementById('bk-next-1');
+  function fillList(id, items) {
+    var ul = document.getElementById(id); if (!ul) return;
+    ul.textContent = '';
+    items.forEach(function (t) { var li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
+  }
+
+  function renderDates(nowMs, src) {
+    var prev = chosen ? chosen.getTime() : null;
+    sessions = nextSessions(nowMs, 3);
+    datesBox.textContent = '';
+    chosen = null;
+    sessions.forEach(function (d, idx) {
+      var lab = document.createElement('label'); lab.className = 'date-opt';
+      var inp = document.createElement('input'); inp.type = 'radio'; inp.name = 'bk-date'; inp.id = 'bk-date-' + idx; inp.value = String(d.getTime());
+      var card = document.createElement('span');
+      card.innerHTML = '<span class="wd"></span><span class="dn"></span><span class="mo"></span><span class="tm">08h30</span>';
+      card.querySelector('.wd').textContent = JOURS[d.getUTCDay()].slice(0, 3) + '.';
+      card.querySelector('.dn').textContent = d.getUTCDate();
+      card.querySelector('.mo').textContent = MOIS[d.getUTCMonth()];
+      if (idx === 0) { var s = document.createElement('span'); s.className = 'soon'; s.textContent = 'Prochaine'; card.appendChild(s); }
+      lab.setAttribute('aria-label', longLabel(d, true) + ', 08h30 à 10h00');
+      inp.addEventListener('change', function () { chosen = d; next1.disabled = false; });
+      if (prev === d.getTime()) { inp.checked = true; chosen = d; }
+      lab.appendChild(inp); lab.appendChild(card); datesBox.appendChild(lab);
+    });
+    next1.disabled = !chosen;
+    fillList('hero-dates', sessions.map(function (d) { return longLabel(d); }));
+    fillList('info-dates', sessions.map(function (d) { return longLabel(d, true); }));
+    document.getElementById('bk-time-src').textContent = src === 'server'
+      ? 'Dates calculées à l’heure de Kinshasa, selon l’horloge du serveur.'
+      : 'Dates calculées à l’heure de Kinshasa.';
+  }
+
+  renderDates(Date.now(), 'device');
+  // Heure du serveur : en-tête Date de la réponse HTTP (repli : horloge de l'appareil)
+  fetch('assets/logo.webp?t=' + Date.now(), { cache: 'no-store' }).then(function (r) {
+    var h = r.headers.get('Date'); var t = h ? Date.parse(h) : NaN;
+    if (!isNaN(t)) renderDates(t, 'server');
+  }).catch(function () {});
+
+  var bk = document.getElementById('booking');
+  var steps = [null, document.getElementById('bk-step-1'), document.getElementById('bk-step-2'), document.getElementById('bk-step-3')];
+  var lastFocus = null;
+  function go(n) {
+    for (var i = 1; i <= 3; i++) steps[i].hidden = i !== n;
+    document.getElementById('bk-step-label').textContent = 'Étape ' + n + ' sur 3';
+    document.getElementById('bk-bar').style.width = (n * 33.34) + '%';
+    if (n === 2) { document.getElementById('bk-recap-2').textContent = longLabel(chosen) + ' · 08h30 – 10h00'; document.getElementById('bk-prenom').focus(); }
+    if (n === 1) { var c = datesBox.querySelector('input:checked') || datesBox.querySelector('input'); if (c) c.focus(); }
+  }
+  function open(btn) { window.sxTrack('trackCustom', 'OuvertureReservation'); lastFocus = btn; bk.hidden = false; document.documentElement.style.overflow = 'hidden'; go(1); }
+  function close() { bk.hidden = true; document.documentElement.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+  document.querySelectorAll('.js-book').forEach(function (b) { b.addEventListener('click', function () { open(b); }); });
+  document.getElementById('bk-close').addEventListener('click', close);
+  bk.addEventListener('click', function (e) { if (e.target === bk) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !bk.hidden) close(); });
+  next1.addEventListener('click', function () { if (chosen) go(2); });
+  document.getElementById('bk-wa').addEventListener('click', function () { window.sxTrack('track', 'Schedule', { content_name: 'Rencontre Succexhub', date: chosen ? longLabel(chosen, true) : '' }); });
+  document.getElementById('bk-back-2').addEventListener('click', function () { go(1); });
+  document.getElementById('bk-back-3').addEventListener('click', function () { go(2); });
+
+  document.getElementById('bk-step-2').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var prenom = document.getElementById('bk-prenom'), nom = document.getElementById('bk-nom'), tel = document.getElementById('bk-tel');
+    var digits = tel.value.replace(/\D/g, '').replace(/^243/, '').replace(/^0/, '');
+    var okP = prenom.value.trim().length > 0, okT = digits.length === 9;
+    prenom.setAttribute('aria-invalid', okP ? 'false' : 'true'); document.getElementById('bk-prenom-err').hidden = okP;
+    tel.setAttribute('aria-invalid', okT ? 'false' : 'true'); document.getElementById('bk-tel-err').hidden = okT;
+    if (!okP) { prenom.focus(); return; }
+    if (!okT) { tel.focus(); return; }
+    var fullName = (prenom.value.trim() + ' ' + nom.value.trim()).trim();
+    var consent = document.getElementById('bk-consent').checked;
+    var msg = 'Bonjour, je réserve ma place à la rencontre Succexhub du ' + longLabel(chosen, true).toLowerCase() + ' à 08h30.\n' +
+      'Nom : ' + fullName + '\nNuméro WhatsApp : +243 ' + digits + '\n' +
+      (consent ? 'J’accepte de recevoir la confirmation et un rappel sur WhatsApp.' : 'Je ne souhaite pas recevoir de rappel.');
+    document.getElementById('bk-wa').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+    document.getElementById('bk-gcal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+      '&text=' + encodeURIComponent('Rencontre Succexhub') +
+      '&dates=' + gcalStamp(chosen, START_UTC) + '/' + gcalStamp(chosen, END_UTC) +
+      '&details=' + encodeURIComponent('Rencontre Succexhub avec Schadrac Ngoy. Référence : Maison Schengen, juste après l’Académie des Beaux-Arts.') +
+      '&location=' + encodeURIComponent('Avenue Lac Moero 279, Kinshasa');
+    document.getElementById('bk-recap-3').textContent = longLabel(chosen, true) + ' · 08h30 – 10h00 · ' + fullName;
+    window.sxTrack('trackCustom', 'CoordonneesRemplies', { date: longLabel(chosen, true) });
+    go(3);
+    document.getElementById('bk-wa').focus();
+  });
+})();
+</script>
+</body>
+</html>
