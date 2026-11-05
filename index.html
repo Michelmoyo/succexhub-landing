@@ -390,6 +390,42 @@ if (window.SX_PIXEL_ID) {
 window.sxTrack = function (type, name, params) { try { if (window.fbq && window.SX_PIXEL_ID) fbq(type, name, params || {}); } catch (e) {} };
 // Correspondance avancée manuelle : fbevents.js normalise et hache ces valeurs (SHA-256) dans le navigateur avant l'envoi.
 window.sxSetUser = function (data) { try { if (window.fbq && window.SX_PIXEL_ID) fbq('init', window.SX_PIXEL_ID, data); } catch (e) {} };
+
+// ---------- Enregistrement des réservations (Google Sheets via Apps Script) ----------
+// URL de l'application Web Apps Script (…/exec). Vide = rien n'est envoyé.
+window.SX_SHEET_URL = '';
+window.SX_SHEET_TOKEN = 'sx_BfKA7RRfO1kKRq2UZ3inWYk';
+
+// Provenance de la visite (UTM, fbclid) : on garde la première de la session.
+(function () {
+  try {
+    var q = new URLSearchParams(location.search), keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
+    var found = {}, any = false;
+    keys.forEach(function (k) { var v = q.get(k); if (v) { found[k] = v.slice(0, 300); any = true; } });
+    if (any && !sessionStorage.getItem('sx_attr')) {
+      if (found.fbclid) found.fbc = 'fb.1.' + Date.now() + '.' + found.fbclid;
+      sessionStorage.setItem('sx_attr', JSON.stringify(found));
+    }
+  } catch (e) {}
+})();
+window.sxAttribution = function () {
+  var a = {};
+  try { a = JSON.parse(sessionStorage.getItem('sx_attr') || '{}'); } catch (e) {}
+  var cookie = function (n) { var m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)')); return m ? decodeURIComponent(m[1]) : ''; };
+  a.fbp = cookie('_fbp');
+  a.fbc = cookie('_fbc') || a.fbc || '';
+  return a;
+};
+// Envoi « sans attendre » : la page ne lit pas la réponse (Apps Script ne gère pas le CORS).
+window.sxSend = function (payload, useBeacon) {
+  if (!window.SX_SHEET_URL) return;
+  payload.token = window.SX_SHEET_TOKEN;
+  var body = JSON.stringify(payload);
+  try {
+    if (useBeacon && navigator.sendBeacon && navigator.sendBeacon(window.SX_SHEET_URL, new Blob([body], { type: 'text/plain;charset=utf-8' }))) return;
+    fetch(window.SX_SHEET_URL, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: body }).catch(function () {});
+  } catch (e) {}
+};
 </script>
 </head>
 <body>
@@ -610,7 +646,7 @@ window.sxSetUser = function (data) { try { if (window.fbq && window.SX_PIXEL_ID)
       </div>
       <label class="consent" for="bk-consent"><input type="checkbox" id="bk-consent" name="consent"><span>Recevoir un rappel sur WhatsApp (STOP pour arrêter).</span></label>
       <button class="btn" type="submit">Continuer</button>
-      <p class="bk-privacy">Tes coordonnées servent à organiser ta venue. <a href="politique-confidentialite.html" target="_blank" rel="noopener">Politique de confidentialité</a></p>
+      <p class="bk-privacy">Tes coordonnées sont enregistrées pour organiser ta venue. <a href="politique-confidentialite.html" target="_blank" rel="noopener">Politique de confidentialité</a></p>
     </form>
 
     <!-- Étape 3 : confirmation -->
@@ -726,7 +762,18 @@ window.sxSetUser = function (data) { try { if (window.fbq && window.SX_PIXEL_ID)
   bk.addEventListener('click', function (e) { if (e.target === bk) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !bk.hidden) close(); });
   next1.addEventListener('click', function () { if (chosen) go(2); });
-  document.getElementById('bk-wa').addEventListener('click', function () { window.sxTrack('track', 'Schedule', { content_name: 'Rencontre Succexhub', date: chosen ? longLabel(chosen, true) : '' }); });
+  var leadId = null;
+  function newLeadId() {
+    var d = new Date(Date.now() + KIN_OFFSET), p = function (n) { return (n < 10 ? '0' : '') + n; };
+    var rnd = Math.random().toString(36).slice(2, 8).toUpperCase();
+    return 'SX-' + d.getUTCFullYear() + p(d.getUTCMonth() + 1) + p(d.getUTCDate()) + '-' + rnd;
+  }
+  function isoDate(d) { return d.toISOString().slice(0, 10); }
+
+  document.getElementById('bk-wa').addEventListener('click', function () {
+    window.sxTrack('track', 'Schedule', { content_name: 'Rencontre Succexhub', date: chosen ? longLabel(chosen, true) : '' });
+    if (leadId) window.sxSend({ action: 'whatsapp', lead_id: leadId }, true);
+  });
   document.getElementById('bk-back-2').addEventListener('click', function () { go(1); });
   document.getElementById('bk-back-3').addEventListener('click', function () { go(2); });
 
@@ -751,7 +798,19 @@ window.sxSetUser = function (data) { try { if (window.fbq && window.SX_PIXEL_ID)
       '&details=' + encodeURIComponent('Rencontre Succexhub avec Schadrac Ngoy. Référence : Maison Schengen, juste après l’Académie des Beaux-Arts.') +
       '&location=' + encodeURIComponent('Avenue Lac Moero 279, Kinshasa');
     document.getElementById('bk-recap-3').textContent = longLabel(chosen, true) + ' · 08h30 – 10h00 · ' + fullName;
-    var userData = { ph: '243' + digits, fn: prenom.value.trim().toLowerCase(), country: 'cd' };
+    if (!leadId) leadId = newLeadId();
+    var attr = window.sxAttribution();
+    window.sxSend({
+      action: 'create', lead_id: leadId,
+      prenom: prenom.value.trim(), nom: nom.value.trim(), phone_e164: '+243' + digits,
+      session_date: isoDate(chosen), session_label: longLabel(chosen, true) + ' 08h30',
+      consent_rappel: consent,
+      utm_source: attr.utm_source || '', utm_medium: attr.utm_medium || '', utm_campaign: attr.utm_campaign || '',
+      utm_content: attr.utm_content || '', utm_term: attr.utm_term || '',
+      fbclid: attr.fbclid || '', fbp: attr.fbp || '', fbc: attr.fbc || '',
+      page_url: location.href.split('#')[0], user_agent: navigator.userAgent
+    }, false);
+    var userData = { ph: '243' + digits, fn: prenom.value.trim().toLowerCase(), country: 'cd', external_id: leadId };
     if (nom.value.trim()) userData.ln = nom.value.trim().toLowerCase();
     window.sxSetUser(userData);
     window.sxTrack('trackCustom', 'CoordonneesRemplies', { date: longLabel(chosen, true) });
