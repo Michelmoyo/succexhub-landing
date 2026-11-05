@@ -275,6 +275,9 @@ footer { background: var(--band-bg); color: var(--band-muted); border-top: 1px s
 footer .wrap { display: grid; gap: 12px; padding-block: 32px 110px; }
 footer img { height: 24px; width: auto; }
 footer p { max-width: var(--text-max); }
+.footer-link { color: var(--band-fg); }
+.bk-privacy { font-size: 0.8125rem; color: var(--fg-muted); text-align: center; }
+.bk-privacy a { color: inherit; }
 
 /* Barre fixe mobile */
 .sticky-cta {
@@ -382,6 +385,8 @@ if (window.SX_PIXEL_ID) {
   fbq('track', 'PageView');
 }
 window.sxTrack = function (type, name, params) { try { if (window.fbq && window.SX_PIXEL_ID) fbq(type, name, params || {}); } catch (e) {} };
+// Correspondance avancée manuelle : fbevents.js normalise et hache ces valeurs (SHA-256) dans le navigateur avant l'envoi.
+window.sxSetUser = function (data) { try { if (window.fbq && window.SX_PIXEL_ID) fbq('init', window.SX_PIXEL_ID, data); } catch (e) {} };
 </script>
 </head>
 <body>
@@ -555,6 +560,7 @@ window.sxTrack = function (type, name, params) { try { if (window.fbq && window.
   <div class="wrap">
     <img src="assets/logo-blanc.webp" alt="Succexhub" width="480" height="100">
     <p>Aucune promesse de revenus. Les résultats dépendent de l'implication de chacun.</p>
+    <p><a class="footer-link" href="politique-confidentialite.html">Politique de confidentialité</a></p>
   </div>
 </footer>
 
@@ -601,6 +607,7 @@ window.sxTrack = function (type, name, params) { try { if (window.fbq && window.
       </div>
       <label class="consent" for="bk-consent"><input type="checkbox" id="bk-consent" name="consent"><span>Recevoir un rappel sur WhatsApp (STOP pour arrêter).</span></label>
       <button class="btn" type="submit">Continuer</button>
+      <p class="bk-privacy">Tes coordonnées servent à organiser ta venue. <a href="politique-confidentialite.html" target="_blank" rel="noopener">Politique de confidentialité</a></p>
     </form>
 
     <!-- Étape 3 : confirmation -->
@@ -741,6 +748,9 @@ window.sxTrack = function (type, name, params) { try { if (window.fbq && window.
       '&details=' + encodeURIComponent('Rencontre Succexhub avec Schadrac Ngoy. Référence : Maison Schengen, juste après l’Académie des Beaux-Arts.') +
       '&location=' + encodeURIComponent('Avenue Lac Moero 279, Kinshasa');
     document.getElementById('bk-recap-3').textContent = longLabel(chosen, true) + ' · 08h30 – 10h00 · ' + fullName;
+    var userData = { ph: '243' + digits, fn: prenom.value.trim().toLowerCase(), country: 'cd' };
+    if (nom.value.trim()) userData.ln = nom.value.trim().toLowerCase();
+    window.sxSetUser(userData);
     window.sxTrack('trackCustom', 'CoordonneesRemplies', { date: longLabel(chosen, true) });
     go(3);
     document.getElementById('bk-wa').focus();
