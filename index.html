@@ -685,8 +685,18 @@ window.sxSend = function (payload, useBeacon) {
   var MOIS = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
   var cap = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
 
+  // Session unique : tant que cette date n'est pas passée, le site ne propose qu'elle.
+  // Mettre '' pour revenir aux dates habituelles (lundi, mercredi, vendredi).
+  var ONLY_DATE = '2026-11-21'; // samedi 21 novembre 2026
+
   function nextSessions(nowMs, n) {
     var k = new Date(nowMs + KIN_OFFSET); // champs UTC = heure de Kinshasa
+    if (ONLY_DATE) {
+      var p = ONLY_DATE.split('-');
+      var only = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2]));
+      var today = Date.UTC(k.getUTCFullYear(), k.getUTCMonth(), k.getUTCDate());
+      if (only.getTime() > today) return [only];
+    }
     var out = [];
     for (var i = 1; out.length < n && i <= 14; i++) { // i = 1 : on n'affiche jamais le jour même
       var d = new Date(Date.UTC(k.getUTCFullYear(), k.getUTCMonth(), k.getUTCDate() + i));
