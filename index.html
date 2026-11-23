@@ -328,7 +328,7 @@ footer p { max-width: var(--text-max); }
 .bk-step h3 { font-size: var(--step-1); }
 .bk-hint { font-size: var(--step--1); color: var(--fg-muted); }
 
-.dates { border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.dates { border: 0; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .date-opt { position: relative; }
 .date-opt input { position: absolute; opacity: 0; pointer-events: none; }
 .date-opt > span {
@@ -687,7 +687,7 @@ window.sxSend = function (payload, useBeacon) {
 
   // Session unique : tant que cette date n'est pas passée, le site ne propose qu'elle.
   // Mettre '' pour revenir aux dates habituelles (lundi, mercredi, vendredi).
-  var ONLY_DATE = '2026-11-21'; // samedi 21 novembre 2026
+  var ONLY_DATE = '';
 
   function nextSessions(nowMs, n) {
     var k = new Date(nowMs + KIN_OFFSET); // champs UTC = heure de Kinshasa
@@ -723,7 +723,7 @@ window.sxSend = function (payload, useBeacon) {
 
   function renderDates(nowMs, src) {
     var prev = chosen ? chosen.getTime() : null;
-    sessions = nextSessions(nowMs, 3);
+    sessions = nextSessions(nowMs, 2); // on ne propose que les 2 prochaines dates
     datesBox.textContent = '';
     chosen = null;
     sessions.forEach(function (d, idx) {
