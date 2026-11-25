@@ -45,7 +45,7 @@ a { color: inherit; }
 .top img { height: 30px; width: auto; }
 .badge { display: inline-block; border: 1.5px solid var(--gold); color: var(--gold-2); border-radius: 999px; padding: 4px 14px; font-weight: 700; letter-spacing: .2em; font-size: .8rem; }
 .hero-grid { display: grid; gap: 28px; margin-top: 28px; align-items: center; }
-@media (min-width: 860px) { .hero-grid { grid-template-columns: 1.1fr .9fr; gap: 48px; } }
+.hero-grid > div { max-width: 640px; }
 .kicker { letter-spacing: .28em; text-transform: uppercase; font-size: .82rem; color: #C9CDE6; margin: 0 0 8px; }
 h1 { margin: 0; font-weight: 900; line-height: 1.02; font-size: clamp(2.4rem, 9vw, 4rem); text-transform: uppercase; }
 h1 span { display: block; color: var(--gold-2); }
@@ -61,7 +61,6 @@ h1 span { display: block; color: var(--gold-2); }
 .hero .btn { margin-top: 24px; width: 100%; }
 @media (min-width: 560px) { .hero .btn { width: auto; } }
 .note { color: #C9CDE6; font-size: .92rem; margin: 10px 0 0; }
-.visual { border-radius: 14px; overflow: hidden; border: 2px solid rgba(217,174,74,.5); box-shadow: 0 18px 50px rgba(0,0,0,.35); max-width: 460px; margin: 0 auto; width: 100%; }
 
 /* Sections */
 section { padding: 48px 0; }
@@ -143,7 +142,6 @@ if (window.SX_LI_PARTNER) {
         <a class="btn" href="#reserver">Réserver ma place</a>
         <p class="note">Réservation en 1 minute. Nous vous appelons le samedi 28 novembre pour confirmer votre place.</p>
       </div>
-      <img class="visual" src="../assets/conference-excellence.jpg" alt="Affiche de la conférence Atteindre l'excellence avec les Managers Essor Schadrac Ngoy et Gloria Mansaka, dimanche 29 novembre à 15h30 au Novotel Kinshasa, entrée 5 dollars" width="1000" height="1000" fetchpriority="high">
     </div>
   </div>
 </header>
