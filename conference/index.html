@@ -253,6 +253,7 @@ if (window.SX_LI_PARTNER) {
 <script>
 (function () {
   var SHEET_URL = 'https://script.google.com/macros/s/AKfycbz6NHHeJgvHLB8gPG0x_kKE5gEU2wbYTiO5aqgSdt9bxHutbztqO4OD-OWTMmTsv5KW/exec';
+  var N8N_URL = 'https://succexhub-n8n.d6wc4z.easypanel.host/webhook/conference-inscription';
   var TOKEN = 'sx_BfKA7RRfO1kKRq2UZ3inWYk';
   var EVENT = 'Atteindre l\'excellence - 29/11/2026';
   var EVENT_DATE = '2026-11-29';
@@ -288,10 +289,15 @@ if (window.SX_LI_PARTNER) {
     return /^[89]\d{8}$/.test(d) ? '+243' + d : '';
   }
   function newId() { var r = Math.random().toString(36).slice(2, 8).toUpperCase(); return 'CF-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + r; }
+  // Envoi en double : n8n (table conference_inscriptions, source principale) et Apps Script (onglet « conference »).
+  function post(url, body) {
+    try { if (navigator.sendBeacon && navigator.sendBeacon(url, new Blob([body], { type: 'text/plain;charset=utf-8' }))) return; } catch (e) {}
+    fetch(url, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: body }).catch(function () {});
+  }
   function send(payload) {
     var body = JSON.stringify(payload);
-    try { if (navigator.sendBeacon && navigator.sendBeacon(SHEET_URL, new Blob([body], { type: 'text/plain;charset=utf-8' }))) return; } catch (e) {}
-    fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', keepalive: true, headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: body }).catch(function () {});
+    post(N8N_URL, body);
+    post(SHEET_URL, body);
   }
 
   var started = false;
