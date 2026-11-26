@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Atteindre l'excellence · Conférence d'affaires · Kinshasa</title>
-<meta name="description" content="Conférence d'affaires « Atteindre l'excellence » avec les Managers Schadrac Ngoy et Gloria Mansaka. Dimanche 29 novembre 2026 à 15h30, Novotel Kinshasa. Entrée 5 $, sur réservation.">
+<meta name="description" content="Conférence d'affaires « Atteindre l'excellence » avec les Managers Schadrac Ngoy et Gloria Mansaka. Dimanche 29 novembre 2026 à 15h30, Novotel Kinshasa. Sur réservation.">
 <meta name="theme-color" content="#0B1546">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_CD">
 <meta property="og:title" content="Atteindre l'excellence · Conférence d'affaires à Kinshasa">
-<meta property="og:description" content="Dimanche 29 novembre à 15h30, Novotel Kinshasa. Avec les Managers Schadrac Ngoy et Gloria Mansaka. Entrée 5 $, réservez votre place.">
+<meta property="og:description" content="Dimanche 29 novembre à 15h30, Novotel Kinshasa. Avec les Managers Schadrac Ngoy et Gloria Mansaka. Réservez votre place.">
 <meta property="og:url" content="https://business.succexhub.com/conference/">
 <meta property="og:image" content="https://business.succexhub.com/assets/og-conference.jpg">
 <meta property="og:image:width" content="1200">
@@ -92,7 +92,6 @@ input:focus, select:focus { outline: none; border-color: var(--gold); box-shadow
 .check input { width: 22px; min-height: 22px; height: 22px; margin-top: 2px; flex: none; accent-color: var(--gold); }
 .err { color: var(--err); font-size: .9rem; margin: 6px 0 0; min-height: 0; }
 .err:empty { display: none; }
-.pay { background: rgba(217,174,74,.14); border: 1px solid rgba(217,174,74,.5); border-radius: 10px; padding: 12px 14px; font-weight: 600; }
 .done { max-width: 560px; }
 .done h3 { font-size: 1.5rem; margin: 0 0 10px; color: var(--ok); }
 .done p { margin: 0 0 12px; }
@@ -137,7 +136,7 @@ if (window.SX_LI_PARTNER) {
           <li><b>Date</b><span>Dimanche 29 novembre</span></li>
           <li><b>Heure</b><span>15h30</span></li>
           <li><b>Lieu</b><span>Novotel Kinshasa</span></li>
-          <li><b>Entrée</b><span>5 $ sur place</span></li>
+          <li><b>Accès</b><span>Sur réservation</span></li>
         </ul>
         <a class="btn" href="#reserver">Réserver ma place</a>
         <p class="note">Réservation en 1 minute. Nous vous appelons le samedi 28 novembre pour confirmer votre place.</p>
@@ -226,7 +225,6 @@ if (window.SX_LI_PARTNER) {
             </select>
           </div>
         </div>
-        <p class="pay" id="cf-pay">Entrée : 5 $ par personne, à payer sur place à l'arrivée.</p>
         <label class="check"><input type="checkbox" id="cf-ok" required aria-describedby="cf-ok-err"> J'accepte d'être appelé(e) par l'équipe Succexhub pour confirmer ma place.</label>
         <p class="err" id="cf-ok-err"></p>
         <button class="btn" type="submit" id="cf-send">Réserver ma place</button>
@@ -236,7 +234,7 @@ if (window.SX_LI_PARTNER) {
       <div class="done" id="done" hidden tabindex="-1">
         <h3>C'est noté, <span id="d-prenom"></span> !</h3>
         <p>Votre réservation pour <b><span id="d-places"></span></b> à la conférence <b>« Atteindre l'excellence »</b> est enregistrée.</p>
-        <p>📅 Dimanche 29 novembre 2026 à 15h30<br>📍 Novotel Kinshasa<br>💵 Entrée : <span id="d-total"></span>, à payer sur place</p>
+        <p>📅 Dimanche 29 novembre 2026 à 15h30<br>📍 Novotel Kinshasa</p>
         <p>📞 Nous vous appellerons le <b>samedi 28 novembre</b> au <b id="d-tel"></b> pour confirmer votre place. Gardez votre téléphone à portée de main.</p>
         <p><a class="btn alt" id="d-cal" target="_blank" rel="noopener">Ajouter à mon agenda</a></p>
       </div>
@@ -275,11 +273,7 @@ if (window.SX_LI_PARTNER) {
   var form = document.getElementById('cf');
   if (Date.now() > CLOSE_AT) { form.hidden = true; document.getElementById('closed').hidden = false; }
 
-  var places = document.getElementById('cf-places'), pay = document.getElementById('cf-pay');
-  places.addEventListener('change', function () {
-    var n = +places.value;
-    pay.textContent = 'Entrée : 5 $ par personne, à payer sur place à l\'arrivée' + (n > 1 ? ' (' + (5 * n) + ' $ pour ' + n + ' personnes).' : '.');
-  });
+  var places = document.getElementById('cf-places');
 
   function setErr(id, msg) { document.getElementById(id + '-err').textContent = msg || ''; var i = document.getElementById(id); if (i) i.setAttribute('aria-invalid', msg ? 'true' : 'false'); }
   function phone() {
@@ -328,17 +322,16 @@ if (window.SX_LI_PARTNER) {
       utm_content: attr.utm_content || '', utm_term: attr.utm_term || '',
       page_url: location.href.slice(0, 300), user_agent: navigator.userAgent.slice(0, 300)
     });
-    track('Lead', { content_name: 'Conference 29/11', value: 5 * n, currency: 'USD' });
+    track('Lead', { content_name: 'Conference 29/11' });
     trackLi();
 
     document.getElementById('d-prenom').textContent = prenom;
     document.getElementById('d-places').textContent = n + (n > 1 ? ' places' : ' place');
-    document.getElementById('d-total').textContent = (5 * n) + ' $' + (n > 1 ? ' (5 $ par personne)' : '');
     document.getElementById('d-tel').textContent = tel.replace(/^\+243(\d{2})(\d{3})(\d{4})$/, '+243 $1 $2 $3');
     document.getElementById('d-cal').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
       + '&text=' + encodeURIComponent('Conférence « Atteindre l\'excellence »')
       + '&dates=20261129T143000Z/20261129T173000Z'
-      + '&details=' + encodeURIComponent('Avec les Managers Essor Schadrac Ngoy et Gloria Mansaka. Entrée 5 $ par personne, à payer sur place.')
+      + '&details=' + encodeURIComponent('Avec les Managers Essor Schadrac Ngoy et Gloria Mansaka.')
       + '&location=' + encodeURIComponent('Novotel Kinshasa');
     setTimeout(function () {
       form.hidden = true;
